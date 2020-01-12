@@ -40,6 +40,7 @@ def get_config():
 
 # Для того, чтобы выполнить дополнительные условия задачи, будем среди всех соответствующих запросу изображений
 #  искать то, которое не было показано в прошлый раз, и имеющее наибольший остаток показов
+# Принимает массив переданных в запросе категорий.
 def get_next_pic(categories):
     # TODO отсортировать изображеия по количеству показов чтобы постоянно не искать максимальное?
     matching_categories = set(categories).intersection(session._initializer["data"].keys())
@@ -82,6 +83,7 @@ def get_next_pic(categories):
 # https://stackoverflow.com/questions/23148369/web-py-session-does-not-work-at-all
 class index:
     def GET(self):
+        # Будем хранить информацию об изображениях в сессии
         if not session._initializer.get('data', False) and not session._initializer.get('initiated', False):
             session._initializer["data"] = get_config()
             session._initializer["initiated"] = True
