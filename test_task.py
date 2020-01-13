@@ -10,6 +10,7 @@ import os
 class Image:
     path: str
     needed_amount_of_shows: int
+    # TODO наверное информацию о последнем показе можно просто хранить в сессии, а не каждом экземпляре класса
     shown_last_time: bool = False
 
 
